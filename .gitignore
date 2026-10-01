@@ -6,3 +6,8 @@ gds/**/*.gltf
 
 .DS_Store
 results.xml
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+sim_build/

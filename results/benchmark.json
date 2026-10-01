@@ -1,0 +1,81 @@
+{
+  "configuration": {
+    "cores": 2,
+    "threads_per_block": 4,
+    "data_channels": 4,
+    "program_channels": 1,
+    "memory_response_cycles": 1,
+    "tile_pixels": 128,
+    "clock_period_ns": 10,
+    "python": "3.9.6",
+    "cocotb": "1.9.2",
+    "host": "Darwin 24.1.0 arm64"
+  },
+  "timing_note": "Kernel cycles count start through done for each launch; exclude 5 setup cycles/launch and host transfer time. Clock is an assumption, not an achieved silicon frequency. Wall time includes driver and verification, excludes compilation and simulator startup.",
+  "results": [
+    {
+      "input": "gradient_64",
+      "width": 64,
+      "height": 64,
+      "pixels": 4096,
+      "k": 50,
+      "launches": 32,
+      "launched_threads": 4096,
+      "kernel_cycles": 125664,
+      "setup_cycles": 160,
+      "clock_period_ns": 10,
+      "kernel_time_us": 1256.64,
+      "cycles_per_pixel": 30.6796875,
+      "simulator_wall_seconds": 13.255719,
+      "correct": true
+    },
+    {
+      "input": "gradient_128",
+      "width": 128,
+      "height": 128,
+      "pixels": 16384,
+      "k": 50,
+      "launches": 128,
+      "launched_threads": 16384,
+      "kernel_cycles": 502656,
+      "setup_cycles": 640,
+      "clock_period_ns": 10,
+      "kernel_time_us": 5026.56,
+      "cycles_per_pixel": 30.6796875,
+      "simulator_wall_seconds": 53.818528,
+      "correct": true
+    },
+    {
+      "input": "shapes_64",
+      "width": 64,
+      "height": 64,
+      "pixels": 4096,
+      "k": 50,
+      "launches": 32,
+      "launched_threads": 4096,
+      "kernel_cycles": 125664,
+      "setup_cycles": 160,
+      "clock_period_ns": 10,
+      "kernel_time_us": 1256.64,
+      "cycles_per_pixel": 30.6796875,
+      "simulator_wall_seconds": 13.570652,
+      "correct": true
+    },
+    {
+      "input": "shapes_128",
+      "width": 128,
+      "height": 128,
+      "pixels": 16384,
+      "k": 50,
+      "launches": 128,
+      "launched_threads": 16384,
+      "kernel_cycles": 502656,
+      "setup_cycles": 640,
+      "clock_period_ns": 10,
+      "kernel_time_us": 5026.56,
+      "cycles_per_pixel": 30.6796875,
+      "simulator_wall_seconds": 54.088096,
+      "correct": true
+    }
+  ]
+}

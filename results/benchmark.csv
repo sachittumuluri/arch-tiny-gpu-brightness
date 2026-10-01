@@ -1,0 +1,5 @@
+input,width,height,pixels,k,launches,launched_threads,kernel_cycles,setup_cycles,clock_period_ns,kernel_time_us,cycles_per_pixel,simulator_wall_seconds,correct
+gradient_64,64,64,4096,50,32,4096,125664,160,10,1256.64,30.6796875,13.255719,True
+gradient_128,128,128,16384,50,128,16384,502656,640,10,5026.56,30.6796875,53.818528,True
+shapes_64,64,64,4096,50,32,4096,125664,160,10,1256.64,30.6796875,13.570652,True
+shapes_128,128,128,16384,50,128,16384,502656,640,10,5026.56,30.6796875,54.088096,True

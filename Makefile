@@ -1,25 +1,33 @@
-.PHONY: test compile
+PYTHON := $(if $(wildcard .venv/bin/python),.venv/bin/python,python3)
 
-export LIBPYTHON_LOC=$(shell cocotb-config --libpython)
+.PHONY: setup test unit rtl exhaustive benchmark test_matadd test_matmul inputs all
 
-test_%:
-	make compile
-	iverilog -o build/sim.vvp -s gpu -g2012 build/gpu.v
-	MODULE=test.test_$* vvp -M $$(cocotb-config --prefix)/cocotb/libs -m libcocotbvpi_icarus build/sim.vvp
+setup:
+	python3 -m venv .venv
+	.venv/bin/python -m pip install -r requirements.txt
 
-compile:
-	make compile_alu
-	sv2v -I src/* -w build/gpu.v
-	echo "" >> build/gpu.v
-	cat build/alu.v >> build/gpu.v
-	echo '`timescale 1ns/1ns' > build/temp.v
-	cat build/gpu.v >> build/temp.v
-	mv build/temp.v build/gpu.v
+unit:
+	$(PYTHON) -m pytest -q tests
 
-compile_%:
-	sv2v -w build/$*.v src/$*.sv
+rtl:
+	$(PYTHON) scripts/run_sim.py test
 
-# TODO: Get gtkwave visualizaiton
+test: unit rtl
 
-show_%: %.vcd %.gtkw
-	gtkwave $^
+exhaustive:
+	$(PYTHON) scripts/run_sim.py exhaustive
+
+benchmark:
+	$(PYTHON) scripts/run_sim.py benchmark
+	$(PYTHON) scripts/report_results.py
+
+test_matadd:
+	$(PYTHON) scripts/run_sim.py matadd
+
+test_matmul:
+	$(PYTHON) scripts/run_sim.py matmul
+
+inputs:
+	$(PYTHON) scripts/generate_inputs.py
+
+all: test_matadd test_matmul test benchmark

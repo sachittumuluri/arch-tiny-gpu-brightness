@@ -1,0 +1,36 @@
+name: Simulation
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install simulators
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y iverilog
+          curl -fsSL https://github.com/zachjs/sv2v/releases/download/v0.0.13/sv2v-Linux.zip -o /tmp/sv2v.zip
+          unzip -q /tmp/sv2v.zip -d /tmp/sv2v
+          sudo install /tmp/sv2v/sv2v-Linux/sv2v /usr/local/bin/sv2v
+          iverilog -V
+          sv2v --version
+      - run: make setup
+      - run: make all
+      - name: Save measured outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: simulation-results
+          path: |
+            results/
+            build/*.xml
