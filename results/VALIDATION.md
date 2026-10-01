@@ -13,6 +13,7 @@ Environment: macOS arm64 (Darwin 24.1.0), Python 3.9.6, cocotb 1.9.2, Icarus Ver
 | `make benchmark` | All four images correct | [JUnit XML](validation/benchmark.xml), [measured report](REPORT.md) |
 | `make exhaustive` | 2 passed: all 65,536 pixel/increment pairs on actual RTL, 14 additional lengths, and delayed memory | [JUnit XML](validation/exhaustive.xml) |
 | Custom-image CLI from outside the repository | Passed; a 3×1 image `[0,205,255]` with `k=50` produced `[50,255,255]` at the requested relative output path | [JUnit XML](validation/image.xml) |
+| Clean Ubuntu 24.04 / Python 3.11.16 workflow | Passed; all four benchmark cycle counts exactly reproduce the local results | [Successful Linux run](https://github.com/sachittumuluri/arch-tiny-gpu-brightness/actions/runs/36925145797) |
 
 The XML files record actual completed simulations; only their absolute source-file paths were made repository-relative. Runtime and simulated-time fields are retained. The exhaustive RTL sweep took about 223 seconds on this host. Every tile also checks input preservation, output guards, exact memory transaction counts, and padded-lane results.
 
