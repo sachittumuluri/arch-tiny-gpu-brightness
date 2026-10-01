@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1790887917" />
+    <testcase name="benchmark" classname="brightness.sim_tests" file="brightness/sim_tests.py" lineno="41" time="134.81439185142517" sim_time_ns="12582401.0" ratio_time="93331.28924296658" />
+  </testsuite>
+</testsuites>

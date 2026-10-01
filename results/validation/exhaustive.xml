@@ -1,0 +1,7 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1790888052" />
+    <testcase name="correctness" classname="brightness.sim_tests" file="brightness/sim_tests.py" lineno="18" time="222.3691999912262" sim_time_ns="20609241.0" ratio_time="92680.2857626558" />
+    <testcase name="delayed_memory" classname="brightness.sim_tests" file="brightness/sim_tests.py" lineno="33" time="0.7146809101104736" sim_time_ns="66411.0" ratio_time="92923.98755933519" />
+  </testsuite>
+</testsuites>

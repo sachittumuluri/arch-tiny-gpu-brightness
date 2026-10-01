@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1790887915" />
+    <testcase name="test_matadd" classname="test.test_matadd" file="test/test_matadd.py" lineno="8" time="0.39273715019226074" sim_time_ns="4475001.0" ratio_time="11394391.89241279" />
+  </testsuite>
+</testsuites>

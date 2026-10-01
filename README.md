@@ -64,6 +64,8 @@ Every intermediate fits in eight bits except the deliberately wrapping `ADD`. Th
 
 ## Results and validation
 
+All 65,536 pixel/increment combinations passed on the actual RTL, in addition to the independent software interpreter. The original examples, boundary/tiling tests, delayed-memory checks, and four image benchmarks also passed. See [recorded validation and simulator reports](results/VALIDATION.md).
+
 The [performance report](results/REPORT.md) contains measured cycle counts, simulator wall times, before/after images, and timing assumptions. Raw records are in [benchmark.csv](results/benchmark.csv) and [benchmark.json](results/benchmark.json).
 
 | Image size | Pixels | Measured kernel cycles | Simulated time at 10 ns/clock |
